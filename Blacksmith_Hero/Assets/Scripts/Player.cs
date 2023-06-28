@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
 
     private float Max_Speed;
     private float Max_Jump;
+
+    public GameObject Enemy;
     // Start is called before the first frame update
     void Start()
     {

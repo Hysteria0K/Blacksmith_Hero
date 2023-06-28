@@ -4,37 +4,37 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    private float Enemy_Speed;
+    private bool Col_check;
 
-    public float Enemy_Speed;
-    private float Col_Speed;
-    public bool Col_check;
+    private float Max_Speed;
     // Start is called before the first frame update
     void Start()
     {
-        Col_Speed = 500.0f;
         Col_check = false;
+
+        Max_Speed = -400.0f;
+
+        Enemy_Speed = Max_Speed;
     }
 
     // Update is called once per frame
     void Update()
     {
 
+        // 이동
         if (Col_check == true)
         {
-            Col_Speed -= 1.0f;
-            this.GetComponent<Rigidbody2D>().velocity = new Vector2(Col_Speed, 0.0f);
+            Enemy_Speed -= 1.0f;
         }
 
-        else
-        {
-            this.transform.Translate(Vector2.left * Enemy_Speed);
-        }
-
-        if (Col_Speed <= 0.0f)
+        if (Enemy_Speed <= Max_Speed)
         {
             Col_check = false;
-            Col_Speed = 0.0f;
+            Enemy_Speed = Max_Speed;
         }
+
+        this.GetComponent<Rigidbody2D>().velocity = new Vector2(Enemy_Speed, 0.0f);
     }
 
 
@@ -44,7 +44,7 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Debug.Log("충돌");
-            Col_Speed = 500.0f;
+            Enemy_Speed = 500.0f;
             Col_check = true;
         }
     }
