@@ -10,10 +10,10 @@ public class Player_Status_Reader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        List<Dictionary<string, object>> data = CSVReader.Read("Player_Status");
+        List<Dictionary<string, object>> Player_Status = CSVReader.Read("Player_Status");
 
-        Player_Hp = (int)data[Player_Level-1]["Hp"];
-        Player_Atk = (int)data[Player_Level - 1]["Atk"];
+        Player_Hp = (int) Player_Status[Player_Level - 1]["Hp"];
+        Player_Atk = (int) Player_Status[Player_Level - 1]["Atk"];
 
     }
 
