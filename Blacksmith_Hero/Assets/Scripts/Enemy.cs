@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -11,19 +12,24 @@ public class Enemy : MonoBehaviour
 
     public GameObject Status_Reader;
     public GameObject Player;
+    public GameObject Enemy_Hp_Bar;
 
     public int Hp;
     public int Atk;
+
+    private int origin_Hp;
     // Start is called before the first frame update
     void Start()
     {
+        origin_Hp = Status_Reader.GetComponent<Status_Reader>().Enemy_Hp;
+
         Col_check = false;
 
         Max_Speed = -400.0f;
 
         Enemy_Speed = Max_Speed;
 
-        Hp = Status_Reader.GetComponent<Status_Reader>().Enemy_Hp;
+        Hp = origin_Hp;
         Atk = Status_Reader.GetComponent<Status_Reader>().Enemy_Atk;
     }
 
@@ -62,6 +68,7 @@ public class Enemy : MonoBehaviour
             Enemy_Speed = 500.0f;
             Col_check = true;
             Hp -= Player.GetComponent<Player>().Atk;
+            Enemy_Hp_Bar.GetComponent<Image>().fillAmount = (float) Hp / origin_Hp;
         }
     }
 }
