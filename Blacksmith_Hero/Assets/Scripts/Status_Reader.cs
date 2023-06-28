@@ -9,6 +9,7 @@ public class Status_Reader : MonoBehaviour
     public int Player_Atk;
 
     public int Stage;
+    public string Enemy_Name;
     public int Enemy_Hp;
     public int Enemy_Atk;
     // Start is called before the first frame update
@@ -20,6 +21,7 @@ public class Status_Reader : MonoBehaviour
         Player_Hp = (int) Player_Status[Player_Level - 1]["Hp"];
         Player_Atk = (int) Player_Status[Player_Level - 1]["Atk"];
 
+        Enemy_Name = (string)Enemy_Status[Stage - 1]["Name"];
         Enemy_Hp = (int)Enemy_Status[Stage - 1]["Hp"];
         Enemy_Atk = (int)Enemy_Status[Stage - 1]["Atk"];
 
