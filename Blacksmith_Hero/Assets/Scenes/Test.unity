@@ -376,7 +376,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 536851988}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 35, z: 1}
+  m_LocalPosition: {x: 0, y: 35, z: 0}
   m_LocalScale: {x: 720, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -417,7 +417,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.1528224}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -428,7 +428,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.6943552}
   m_EdgeRadius: 0
 --- !u!1 &714246109
 GameObject:
@@ -441,7 +441,7 @@ GameObject:
   - component: {fileID: 714246110}
   - component: {fileID: 714246111}
   m_Layer: 0
-  m_Name: Player_Status
+  m_Name: Status_Reader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -460,7 +460,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &714246111
 MonoBehaviour:
@@ -477,6 +477,9 @@ MonoBehaviour:
   Player_Level: 1
   Player_Hp: 0
   Player_Atk: 0
+  Stage: 2
+  Enemy_Hp: 0
+  Enemy_Atk: 0
 --- !u!1 &765460925
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,7 +504,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 765460925}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -602,7 +605,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &932259847
 BoxCollider2D:
@@ -663,6 +666,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb772671f4756c4c81b8ee40ceec82a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Status_Reader: {fileID: 714246109}
+  Player: {fileID: 1883574513}
+  Hp: 0
+  Atk: 0
 --- !u!1 &956046102
 GameObject:
   m_ObjectHideFlags: 0
@@ -824,8 +831,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1059568669}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 499, z: 2}
-  m_LocalScale: {x: 722.304, y: 925.05994, z: 1}
+  m_LocalPosition: {x: -0.1256, y: 358.3474, z: 0}
+  m_LocalScale: {x: 722.08734, y: 643.7844, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 765460926}
@@ -858,8 +865,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1467297943}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 360, y: 501.3261, z: 1}
-  m_LocalScale: {x: 920.66943, y: 10, z: 1}
+  m_LocalPosition: {x: 360.0002, y: 360.0813, z: 0}
+  m_LocalScale: {x: 639.03064, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 765460926}
@@ -991,8 +998,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1503666037}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -362.1357, y: 501.2822, z: 1}
-  m_LocalScale: {x: 920.55206, y: 5.728368, z: 1}
+  m_LocalPosition: {x: -358.3002, y: 359.0219, z: 0}
+  m_LocalScale: {x: 638.94916, y: 5.728368, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 765460926}
@@ -1258,7 +1265,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1883574513}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 67, y: 719, z: 1}
+  m_LocalPosition: {x: 69.6, y: 717.7, z: 1}
   m_LocalScale: {x: 20, y: 20, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1277,7 +1284,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1078dcbb74eec4cb8da40577c266b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player_Status: {fileID: 714246109}
+  Status_Reader: {fileID: 714246109}
+  Enemy: {fileID: 932259843}
+  Hp: 0
+  Atk: 0
 --- !u!61 &1883574518
 BoxCollider2D:
   m_ObjectHideFlags: 0

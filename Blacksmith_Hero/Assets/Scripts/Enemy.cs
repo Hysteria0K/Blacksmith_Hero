@@ -8,6 +8,12 @@ public class Enemy : MonoBehaviour
     private bool Col_check;
 
     private float Max_Speed;
+
+    public GameObject Status_Reader;
+    public GameObject Player;
+
+    public int Hp;
+    public int Atk;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,24 +22,35 @@ public class Enemy : MonoBehaviour
         Max_Speed = -400.0f;
 
         Enemy_Speed = Max_Speed;
+
+        Hp = Status_Reader.GetComponent<Status_Reader>().Enemy_Hp;
+        Atk = Status_Reader.GetComponent<Status_Reader>().Enemy_Atk;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // 이동
-        if (Col_check == true)
+        if (Hp > 0) // Hp가 0보다 많을 때
         {
-            Enemy_Speed -= 10.0f;
+            // 이동
+            if (Col_check == true)
+            {
+                Enemy_Speed -= 10.0f;
+            }
+
+            if (Enemy_Speed <= Max_Speed)
+            {
+                Col_check = false;
+                Enemy_Speed = Max_Speed;
+            }
+
+            this.GetComponent<Rigidbody2D>().velocity = new Vector2(Enemy_Speed, 0.0f);
         }
 
-        if (Enemy_Speed <= Max_Speed)
+        else
         {
-            Col_check = false;
-            Enemy_Speed = Max_Speed;
+            Destroy(this.gameObject);
         }
-
-        this.GetComponent<Rigidbody2D>().velocity = new Vector2(Enemy_Speed, 0.0f);
     }
 
 
@@ -44,6 +61,7 @@ public class Enemy : MonoBehaviour
         {
             Enemy_Speed = 500.0f;
             Col_check = true;
+            Hp -= Player.GetComponent<Player>().Atk;
         }
     }
 }

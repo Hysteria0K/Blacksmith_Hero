@@ -14,7 +14,8 @@ public class Player : MonoBehaviour
     private float Max_Speed;
     private float Max_Jump;
 
-    public GameObject Player_Status;
+    public GameObject Status_Reader;
+    public GameObject Enemy;
 
     public int Hp;
     public int Atk;
@@ -32,14 +33,14 @@ public class Player : MonoBehaviour
         Max_Jump = 100.0f;
 
         Player_Speed = Max_Speed;
-        Hp = Player_Status.GetComponent<Player_Status_Reader>().Player_Hp;
-        Atk = Player_Status.GetComponent<Player_Status_Reader>().Player_Atk;
+        Hp = Status_Reader.GetComponent<Status_Reader>().Player_Hp;
+        Atk = Status_Reader.GetComponent<Status_Reader>().Player_Atk;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Hp > 0)
+        if (Hp > 0) // Hp가 0보다 많을 때
         {
             // 이동
             if (Col_check == true)
@@ -80,7 +81,7 @@ public class Player : MonoBehaviour
             this.GetComponent<Rigidbody2D>().velocity = new Vector2(Player_Speed, Jump_Speed);
         }
 
-        else
+        else // 전투 패배시
         {
             Destroy(this.gameObject);
         }
@@ -94,7 +95,7 @@ public class Player : MonoBehaviour
             Player_Speed = -500.0f;
             Col_check = true;
 
-            Hp -= 1;
+            Hp -= Enemy.GetComponent<Enemy>().Atk;
         }
     }
 
