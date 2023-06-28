@@ -17,6 +17,9 @@ public class Status_Reader : MonoBehaviour
     {
         List<Dictionary<string, object>> Player_Status = CSVReader.Read("Player_Status");
         List<Dictionary<string, object>> Enemy_Status = CSVReader.Read("Enemy_Status");
+        List<Dictionary<string, object>> DataBase= CSVReader.Read("DataBase");
+
+        Stage = (int)DataBase[0]["Stage"];
 
         Player_Hp = (int) Player_Status[Player_Level - 1]["Hp"];
         Player_Atk = (int) Player_Status[Player_Level - 1]["Atk"];

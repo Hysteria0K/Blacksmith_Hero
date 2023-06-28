@@ -477,7 +477,7 @@ MonoBehaviour:
   Player_Level: 1
   Player_Hp: 0
   Player_Atk: 0
-  Stage: 2
+  Stage: 0
   Enemy_Name: 
   Enemy_Hp: 0
   Enemy_Atk: 0
