@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
         // ¿Ãµø
         if (Col_check == true)
         {
-            Enemy_Speed -= 1.0f;
+            Enemy_Speed -= 10.0f;
         }
 
         if (Enemy_Speed <= Max_Speed)

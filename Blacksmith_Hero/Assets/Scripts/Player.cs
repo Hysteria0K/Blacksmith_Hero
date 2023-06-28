@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
         // 이동
         if (Col_check == true)
         {
-            Player_Speed += 1.0f;
+            Player_Speed += 10.0f;
         }
 
         if (Player_Speed >= Max_Speed)
@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
         // 점프
         if (Jump_check == false)
         {
-            Jump_Speed -= 1.0f;
+            Jump_Speed -= 10.0f;
         }
 
         if (Jump_Speed <= -2 * Max_Jump && Jump_check == false)
@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
 
         if (Jump_Speed <= Max_Jump && Jump_check == true)
         {
-            Jump_Speed += 1.0f;
+            Jump_Speed += 10.0f;
         }
 
         if (Jump_Speed > Max_Jump)
