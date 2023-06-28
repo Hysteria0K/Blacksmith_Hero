@@ -77,7 +77,6 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            Debug.Log("Ãæµ¹");
             Player_Speed = -500.0f;
             Col_check = true;
         }

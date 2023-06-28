@@ -21,7 +21,6 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         // 이동
         if (Col_check == true)
         {
@@ -43,7 +42,6 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("충돌");
             Enemy_Speed = 500.0f;
             Col_check = true;
         }
