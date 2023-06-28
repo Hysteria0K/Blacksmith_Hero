@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -13,7 +14,11 @@ public class Player : MonoBehaviour
     private float Max_Speed;
     private float Max_Jump;
 
-    public GameObject Enemy;
+    public GameObject Player_Status;
+
+    public int Hp;
+    public int Atk;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,51 +32,60 @@ public class Player : MonoBehaviour
         Max_Jump = 100.0f;
 
         Player_Speed = Max_Speed;
+        Hp = Player_Status.GetComponent<Player_Status_Reader>().Player_Hp;
+        Atk = Player_Status.GetComponent<Player_Status_Reader>().Player_Atk;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // 이동
-        if (Col_check == true)
+        if (Hp > 0)
         {
-            Player_Speed += 10.0f;
+            // 이동
+            if (Col_check == true)
+            {
+                Player_Speed += 10.0f;
+            }
+
+            if (Player_Speed >= Max_Speed)
+            {
+                Col_check = false;
+                Player_Speed = Max_Speed;
+            }
+
+            // 점프
+            if (Jump_check == false)
+            {
+                Jump_Speed -= 10.0f;
+            }
+
+            if (Jump_Speed <= -2 * Max_Jump && Jump_check == false)
+            {
+                Jump_Speed = -2 * Max_Jump;
+                Jump_check = true;
+            }
+
+            if (Jump_Speed <= Max_Jump && Jump_check == true)
+            {
+                Jump_Speed += 10.0f;
+            }
+
+            if (Jump_Speed > Max_Jump)
+            {
+                Jump_Speed = Max_Jump;
+                Jump_check = false;
+            }
+
+            // 최종 이동
+            this.GetComponent<Rigidbody2D>().velocity = new Vector2(Player_Speed, Jump_Speed);
         }
 
-        if (Player_Speed >= Max_Speed)
+        else
         {
-            Col_check = false;
-            Player_Speed = Max_Speed;
+            Destroy(this.gameObject);
         }
 
-        // 점프
-        if (Jump_check == false)
-        {
-            Jump_Speed -= 10.0f;
-        }
-
-        if (Jump_Speed <= -2 * Max_Jump && Jump_check == false)
-        {
-            Jump_Speed = -2 * Max_Jump;
-            Jump_check = true;
-        }
-
-        if (Jump_Speed <= Max_Jump && Jump_check == true)
-        {
-            Jump_Speed += 10.0f;
-        }
-
-        if (Jump_Speed > Max_Jump)
-        {
-            Jump_Speed = Max_Jump;
-            Jump_check = false;
-        }
-
-        // 최종 이동
-        this.GetComponent<Rigidbody2D>().velocity = new Vector2(Player_Speed, Jump_Speed);
     }
-
-
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -79,6 +93,8 @@ public class Player : MonoBehaviour
         {
             Player_Speed = -500.0f;
             Col_check = true;
+
+            Hp -= 1;
         }
     }
 
