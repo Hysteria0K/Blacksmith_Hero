@@ -98,6 +98,4 @@ public class Player : MonoBehaviour
             Hp -= Enemy.GetComponent<Enemy>().Atk;
         }
     }
-
-
 }
