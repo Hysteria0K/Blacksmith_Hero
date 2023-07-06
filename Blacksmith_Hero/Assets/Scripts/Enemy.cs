@@ -13,9 +13,11 @@ public class Enemy : MonoBehaviour
     public GameObject Status_Reader;
     public GameObject Player;
     public GameObject Enemy_Hp_Bar;
+    public GameObject Enemy_Name;
 
     public int Hp;
     public int Atk;
+    public string Name;
 
     private int origin_Hp;
     // Start is called before the first frame update
@@ -29,8 +31,11 @@ public class Enemy : MonoBehaviour
 
         Enemy_Speed = Max_Speed;
 
+        Name = Status_Reader.GetComponent<Status_Reader>().Enemy_Name;
         Hp = origin_Hp;
         Atk = Status_Reader.GetComponent<Status_Reader>().Enemy_Atk;
+
+        Enemy_Name.GetComponent<Text>().text = $"{Name} ({Hp} / {origin_Hp})";
     }
 
     // Update is called once per frame
@@ -69,6 +74,7 @@ public class Enemy : MonoBehaviour
             Col_check = true;
             Hp -= Player.GetComponent<Player>().Atk;
             Enemy_Hp_Bar.GetComponent<Image>().fillAmount = (float) Hp / origin_Hp;
+            Enemy_Name.GetComponent<Text>().text = $"{Name} ({Hp} / {origin_Hp})";
         }
     }
 }
