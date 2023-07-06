@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
         Hp = origin_Hp;
         Atk = Status_Reader.GetComponent<Status_Reader>().Player_Atk;
 
-        Player_Text.GetComponent<Text>().text = $"({Hp} / {origin_Hp})";
+        Player_Text.GetComponent<Text>().text = $"플레이어 ({Hp} / {origin_Hp})";
     }
 
     // Update is called once per frame
@@ -104,7 +104,7 @@ public class Player : MonoBehaviour
 
             Hp -= Enemy.GetComponent<Enemy>().Atk;
             Player_Hp_Bar.GetComponent<Image>().fillAmount = (float)Hp / origin_Hp;
-            Player_Text.GetComponent<Text>().text = $"({Hp} / {origin_Hp})";
+            Player_Text.GetComponent<Text>().text = $"플레이어 ({Hp} / {origin_Hp})";
         }
     }
 }
