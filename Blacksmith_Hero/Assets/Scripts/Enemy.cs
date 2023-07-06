@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     public string Name;
 
     private int origin_Hp;
+
     // Start is called before the first frame update
     void Start()
     {
