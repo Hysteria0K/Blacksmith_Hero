@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
+//using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
@@ -16,13 +17,17 @@ public class Player : MonoBehaviour
 
     public GameObject Status_Reader;
     public GameObject Enemy;
+    public GameObject Player_Hp_Bar;
+    public GameObject Player_Text;
 
     public int Hp;
     public int Atk;
 
+    private int origin_Hp;
     // Start is called before the first frame update
     void Start()
     {
+        origin_Hp = Status_Reader.GetComponent<Status_Reader>().Player_Hp;
 
         Jump_Speed = 0.0f;
 
@@ -33,8 +38,10 @@ public class Player : MonoBehaviour
         Max_Jump = 100.0f;
 
         Player_Speed = Max_Speed;
-        Hp = Status_Reader.GetComponent<Status_Reader>().Player_Hp;
+        Hp = origin_Hp;
         Atk = Status_Reader.GetComponent<Status_Reader>().Player_Atk;
+
+        Player_Text.GetComponent<Text>().text = $"({Hp} / {origin_Hp})";
     }
 
     // Update is called once per frame
@@ -96,6 +103,8 @@ public class Player : MonoBehaviour
             Col_check = true;
 
             Hp -= Enemy.GetComponent<Enemy>().Atk;
+            Player_Hp_Bar.GetComponent<Image>().fillAmount = (float)Hp / origin_Hp;
+            Player_Text.GetComponent<Text>().text = $"({Hp} / {origin_Hp})";
         }
     }
 }
