@@ -12,6 +12,7 @@ public class Status_Reader : MonoBehaviour
     public string Enemy_Name;
     public int Enemy_Hp;
     public int Enemy_Atk;
+    public int Enemy_Money;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +28,7 @@ public class Status_Reader : MonoBehaviour
         Enemy_Name = (string)Enemy_Status[Stage - 1]["Name"];
         Enemy_Hp = (int)Enemy_Status[Stage - 1]["Hp"];
         Enemy_Atk = (int)Enemy_Status[Stage - 1]["Atk"];
+        Enemy_Money = (int)Enemy_Status[Stage - 1]["Money"];
 
     }
 
