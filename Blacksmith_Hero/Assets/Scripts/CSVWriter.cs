@@ -14,7 +14,7 @@ public class CSVWriter : MonoBehaviour
         //UpdateCSVFile("Gold", "200");
     }
 
-    private void UpdateCSVFile(string searchValue, string newValue) // (수정하고자 하는 값, 값)
+    public static void UpdateDataBase(string searchValue, string newValue) // (수정하고자 하는 값, 값)
     {
         // 파일 읽기를 위해 StreamReader를 사용하여 CSV 파일 열기
         string filepath = "Assets/DataTable/Resources/Database.csv";
@@ -64,6 +64,7 @@ public class CSVWriter : MonoBehaviour
 
                 // 수정된 데이터를 파일에 쓰기
                 File.WriteAllLines(filepath, lines);
+
             }
         }
     }

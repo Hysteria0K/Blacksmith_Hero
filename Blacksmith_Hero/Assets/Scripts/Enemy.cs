@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,8 @@ public class Enemy : MonoBehaviour
 
     private float Max_Speed;
 
+
+    public GameObject Game_Manager;
     public GameObject Status_Reader;
     public GameObject Player;
     public GameObject Enemy_Hp_Bar;
@@ -61,6 +64,7 @@ public class Enemy : MonoBehaviour
 
         else
         {
+            Game_Manager.GetComponent<Game_Manager>().Enemy_Defeat = true;
             Destroy(this.gameObject);
         }
     }

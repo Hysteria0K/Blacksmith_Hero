@@ -963,6 +963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb772671f4756c4c81b8ee40ceec82a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Game_Manager: {fileID: 1846631208}
   Status_Reader: {fileID: 714246109}
   Player: {fileID: 1883574513}
   Enemy_Hp_Bar: {fileID: 605366052}
@@ -1897,10 +1898,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b08ddb9ed97b138439176ef7be535d3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Status_Reader: {fileID: 714246109}
-  Gold: {fileID: 1617942935}
-  Stage: {fileID: 477344302}
-  Token: {fileID: 1101358176}
 --- !u!1 &1846631208
 GameObject:
   m_ObjectHideFlags: 0
@@ -1910,6 +1907,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1846631209}
+  - component: {fileID: 1846631210}
   m_Layer: 0
   m_Name: Game_Manager
   m_TagString: Untagged
@@ -1932,6 +1930,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1846631210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846631208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f75e658e5179cab43b90c282f3c2a0a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StatusReader: {fileID: 714246109}
+  Enemy_Defeat: 0
+  Gold: 0
+  Gold_String: 
 --- !u!1 &1883574513
 GameObject:
   m_ObjectHideFlags: 0
