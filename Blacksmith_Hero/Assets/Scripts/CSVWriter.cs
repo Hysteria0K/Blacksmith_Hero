@@ -12,7 +12,7 @@ public class CSVWriter : MonoBehaviour
 {
     void Start()
     {
-        //UpdateCSVFile("Gold", "200");
+
     }
 
     public static void UpdateDataBase(string searchValue, string newValue) // (수정하고자 하는 값, 값)
@@ -21,7 +21,7 @@ public class CSVWriter : MonoBehaviour
         // 파일 읽기를 위해 StreamReader를 사용하여 CSV 파일 열기
         if (Application.isEditor)
         {
-            filepath = "Assets/DataTable/Resources/Database.csv";
+            filepath = "Assets/Database.csv";
         }
 
         else
