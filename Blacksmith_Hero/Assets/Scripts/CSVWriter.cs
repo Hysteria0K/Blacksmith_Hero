@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Linq;
-using UnityEditor.Search;
+//using UnityEditor.Search;
 using Unity.VisualScripting.Antlr3.Runtime;
 using System;
+using UnityEditor;
 
 public class CSVWriter : MonoBehaviour
 {
@@ -64,7 +65,6 @@ public class CSVWriter : MonoBehaviour
 
                 // 수정된 데이터를 파일에 쓰기
                 File.WriteAllLines(filepath, lines);
-
             }
         }
     }

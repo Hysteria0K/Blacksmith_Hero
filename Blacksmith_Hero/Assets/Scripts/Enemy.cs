@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Search;
+//using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -65,7 +65,9 @@ public class Enemy : MonoBehaviour
         else
         {
             Game_Manager.GetComponent<Game_Manager>().Enemy_Defeat = true;
+            //UnityEngine.SceneManagement.SceneManager.LoadScene(gameObject.scene.name);
             Destroy(this.gameObject);
+
         }
     }
 

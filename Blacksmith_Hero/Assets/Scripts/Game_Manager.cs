@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Search;
+using System.IO;
+//using UnityEditor.Search;
 using UnityEngine;
 
 public class Game_Manager : MonoBehaviour
@@ -11,7 +12,6 @@ public class Game_Manager : MonoBehaviour
     public bool Enemy_Defeat;
     // Start is called before the first frame update
 
-    public int Gold;
     void Start()
     {
         Enemy_Defeat = false;
@@ -24,9 +24,6 @@ public class Game_Manager : MonoBehaviour
         if (Enemy_Defeat == true)
         {
             Status_Reader.GetComponent<Status_Reader>().Gold += Status_Reader.GetComponent<Status_Reader>().Enemy_Gold;
-            Gold = Status_Reader.GetComponent<Status_Reader>().Gold;
-
-            CSVWriter.UpdateDataBase("Gold", Gold.ToString());
             UI_Manager.GetComponent<UI_Manager>().UI_Call = true;
             Enemy_Defeat = false;
         }
