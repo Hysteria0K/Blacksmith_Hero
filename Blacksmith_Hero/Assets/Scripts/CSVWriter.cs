@@ -21,12 +21,12 @@ public class CSVWriter : MonoBehaviour
         // 파일 읽기를 위해 StreamReader를 사용하여 CSV 파일 열기
         if (Application.isEditor)
         {
-            filepath = "Assets/Database.csv";
+            filepath = "Assets/StreamingAssets/DataTable/Database.csv";
         }
 
         else
         {
-            filepath = Path.Combine(Application.persistentDataPath, "Database.csv"); //"Assets/DataTable/Resources/Database.csv";
+            filepath = Path.Combine(Application.persistentDataPath + "/DataTable", "Database.csv"); //"Assets/DataTable/Resources/Database.csv";
         }
 
         // 행 번호를 기억하기 위한 변수

@@ -16,7 +16,7 @@ public class CSVReader
 
         else
         {
-           filePath = Path.Combine(Application.dataPath, file);
+           filePath = Path.Combine(Application.streamingAssetsPath + "/DataTable", file);
         }
 
         List<Dictionary<string, object>> data = new List<Dictionary<string, object>>();
