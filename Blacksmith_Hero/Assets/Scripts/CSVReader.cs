@@ -8,16 +8,7 @@ public class CSVReader
 {
     public static List<Dictionary<string, object>> Read(string file)
     {
-        string filePath;
-        if (file == "DataBase.csv" && Application.isMobilePlatform)
-        {
-            filePath = Path.Combine(Application.persistentDataPath, "database.csv");
-        }
-
-        else
-        {
-           filePath = Path.Combine(Application.streamingAssetsPath + "/DataTable", file);
-        }
+        string filePath = Path.Combine(Application.persistentDataPath + "/DataTable", file);
 
         List<Dictionary<string, object>> data = new List<Dictionary<string, object>>();
 
@@ -43,7 +34,6 @@ public class CSVReader
                 data.Add(rowData);
             }
         }
-
         return data;
     }
 }

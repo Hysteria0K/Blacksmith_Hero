@@ -17,18 +17,8 @@ public class CSVWriter : MonoBehaviour
 
     public static void UpdateDataBase(string searchValue, string newValue) // (수정하고자 하는 값, 값)
     {
-        string filepath;
-        // 파일 읽기를 위해 StreamReader를 사용하여 CSV 파일 열기
-        if (Application.isEditor)
-        {
-            filepath = "Assets/StreamingAssets/DataTable/Database.csv";
-        }
-
-        else
-        {
-            filepath = Path.Combine(Application.persistentDataPath + "/DataTable", "Database.csv"); //"Assets/DataTable/Resources/Database.csv";
-        }
-
+        string filepath = Path.Combine(Application.persistentDataPath + "/DataTable", "Database.csv"); //"Assets/DataTable/Resources/Database.csv";
+      
         // 행 번호를 기억하기 위한 변수
         int searchLine = -1;
         int searchColumn = -1;

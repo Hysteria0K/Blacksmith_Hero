@@ -15,7 +15,7 @@ public class EventSystem : MonoBehaviour
 
 
         // 파일 생성
-        if (Application.isMobilePlatform)
+        if (Application.isMobilePlatform) //Application.isMobilePlatform
         {
             string filePath = Path.Combine(Application.persistentDataPath, "DataTable");
 
