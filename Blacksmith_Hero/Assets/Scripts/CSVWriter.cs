@@ -17,7 +17,7 @@ public class CSVWriter : MonoBehaviour
 
     public static void UpdateDataBase(string searchValue, string newValue) // (수정하고자 하는 값, 값)
     {
-        string filepath = Path.Combine(Application.persistentDataPath + "/DataTable", "Database.csv"); //"Assets/DataTable/Resources/Database.csv";
+        string filepath = Path.Combine(Application.persistentDataPath + "/datatable", "database.csv"); //"Assets/DataTable/Resources/Database.csv";
       
         // 행 번호를 기억하기 위한 변수
         int searchLine = -1;

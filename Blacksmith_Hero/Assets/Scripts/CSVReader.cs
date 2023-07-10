@@ -8,7 +8,7 @@ public class CSVReader
 {
     public static List<Dictionary<string, object>> Read(string file)
     {
-        string filePath = Path.Combine(Application.persistentDataPath + "/DataTable", file);
+        string filePath = Path.Combine(Application.persistentDataPath + "/datatable", file);
 
         List<Dictionary<string, object>> data = new List<Dictionary<string, object>>();
 

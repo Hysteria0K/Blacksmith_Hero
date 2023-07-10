@@ -22,9 +22,9 @@ public class Status_Reader : MonoBehaviour
     void Start()
     {
 
-        List<Dictionary<string, object>> Player_Status = CSVReader.Read("Player_Status.csv");
-        List<Dictionary<string, object>> Enemy_Status = CSVReader.Read("Enemy_Status.csv");
-        List<Dictionary<string, object>> DataBase = CSVReader.Read("DataBase.csv");
+        List<Dictionary<string, object>> Player_Status = CSVReader.Read("playerstatus.csv");
+        List<Dictionary<string, object>> Enemy_Status = CSVReader.Read("enemystatus.csv");
+        List<Dictionary<string, object>> DataBase = CSVReader.Read("database.csv");
 
         if (DataBase[0].ContainsKey("Stage")) if (int.TryParse(DataBase[0]["Stage"].ToString(), out Stage)) { }
         if (DataBase[0].ContainsKey("Gold")) if (int.TryParse(DataBase[0]["Gold"].ToString(), out Gold)) { }
