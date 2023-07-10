@@ -39,16 +39,16 @@ public class EventSystem : MonoBehaviour
 
     private void CopyFilesToPersistentDataPath()
     {
-        string datatableFolderPath = "datatable";  // datatable 폴더 이름만 사용
         string targetFolderPath = Application.persistentDataPath + "/datatable";
-        string[] csvFiles = BetterStreamingAssets.GetFiles(datatableFolderPath, "*.csv");
+
+        string[] csvFiles = BetterStreamingAssets.GetFiles("/", "*.csv", SearchOption.AllDirectories);
+
+        Directory.CreateDirectory(targetFolderPath);
 
         foreach (string csvFilePath in csvFiles)
         {
             string fileName = Path.GetFileName(csvFilePath);
             string targetFilePath = Path.Combine(targetFolderPath, fileName);
-
-            Directory.CreateDirectory(targetFolderPath);
 
             if (!File.Exists(targetFilePath))
             {
