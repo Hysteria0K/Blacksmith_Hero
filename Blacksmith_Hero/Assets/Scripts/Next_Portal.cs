@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Next_Portal : MonoBehaviour
 {
+    public GameObject UI_Manager;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,7 @@ public class Next_Portal : MonoBehaviour
         if (other.tag == "Player")
         {
             Debug.Log("¥Ÿ¿Ω");
+            UI_Manager.GetComponent<UI_Manager>().Fade();
         }
     }
 
