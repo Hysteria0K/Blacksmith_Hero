@@ -5,6 +5,8 @@ using UnityEngine;
 public class Next_Portal : MonoBehaviour
 {
     public GameObject UI_Manager;
+
+    public GameObject Right_Wall;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,5 +27,11 @@ public class Next_Portal : MonoBehaviour
             UI_Manager.GetComponent<UI_Manager>().Fade();
         }
     }
-
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            Right_Wall.SetActive(true);
+        }
+    }
 }
