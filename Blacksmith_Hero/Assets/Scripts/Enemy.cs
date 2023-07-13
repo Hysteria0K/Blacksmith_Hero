@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    private float Enemy_Speed;
+    public float Enemy_Speed;
     private bool Col_check;
 
     private float Max_Speed;
@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
     public int Atk;
     public string Name;
 
-    private int origin_Hp;
+    public int origin_Hp;
 
     // Start is called before the first frame update
     void Start()
@@ -67,7 +67,7 @@ public class Enemy : MonoBehaviour
             Game_Manager.GetComponent<Game_Manager>().Enemy_Defeat();
 
             //UnityEngine.SceneManagement.SceneManager.LoadScene(gameObject.scene.name);
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
 
         }
     }
@@ -81,9 +81,13 @@ public class Enemy : MonoBehaviour
             Enemy_Speed = 500.0f;
             Col_check = true;
             Hp -= Player.GetComponent<Player>().Atk;
-            Enemy_Hp_Bar.GetComponent<Image>().fillAmount = (float) Hp / origin_Hp;
-            Enemy_Name.GetComponent<Text>().text = $"{Name} ({Hp} / {origin_Hp})";
+            Hp_Bar_Update();
         }
+    }
+    public void Hp_Bar_Update()
+    {
+        Enemy_Hp_Bar.GetComponent<Image>().fillAmount = (float)Hp / origin_Hp;
+        Enemy_Name.GetComponent<Text>().text = $"{Name} ({Hp} / {origin_Hp})";
     }
 }
         

@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     public int Hp;
     public int Atk;
 
-    private int origin_Hp;
+    public int origin_Hp;
     // Start is called before the first frame update
     void Start()
     {
@@ -105,8 +105,12 @@ public class Player : MonoBehaviour
             Col_check = true;
 
             Hp -= Enemy.GetComponent<Enemy>().Atk;
-            Player_Hp_Bar.GetComponent<Image>().fillAmount = (float)Hp / origin_Hp;
-            Player_Text.GetComponent<Text>().text = $"플레이어 ({Hp} / {origin_Hp})";
+            Hp_Bar_Update();
         }
+    }
+    public void Hp_Bar_Update()
+    {
+        Player_Hp_Bar.GetComponent<Image>().fillAmount = (float)Hp / origin_Hp;
+        Player_Text.GetComponent<Text>().text = $"플레이어 ({Hp} / {origin_Hp})";
     }
 }

@@ -21,7 +21,18 @@ public class Status_Reader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Read_Status();
+    }          
+    
 
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    public void Read_Status()
+    {
         List<Dictionary<string, object>> Player_Status = CSVReader.Read("playerstatus.csv");
         List<Dictionary<string, object>> Enemy_Status = CSVReader.Read("enemystatus.csv");
         List<Dictionary<string, object>> DataBase = CSVReader.Read("database.csv");
@@ -38,12 +49,5 @@ public class Status_Reader : MonoBehaviour
         if (Enemy_Status[Stage - 1].ContainsKey("Hp")) if (int.TryParse(Enemy_Status[Stage - 1]["Hp"].ToString(), out Enemy_Hp)) { }
         if (Enemy_Status[Stage - 1].ContainsKey("Atk")) if (int.TryParse(Enemy_Status[Stage - 1]["Atk"].ToString(), out Enemy_Atk)) { }
         if (Enemy_Status[Stage - 1].ContainsKey("Gold")) if (int.TryParse(Enemy_Status[Stage - 1]["Gold"].ToString(), out Enemy_Gold)) { }
-    }          
-    
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

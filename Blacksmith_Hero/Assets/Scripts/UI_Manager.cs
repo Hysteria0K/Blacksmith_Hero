@@ -14,6 +14,8 @@ public class UI_Manager : MonoBehaviour
 
     public Image Panel;
 
+    public GameObject Game_Manager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +52,9 @@ public class UI_Manager : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1.5f);
+
+        Status_Reader.GetComponent<Status_Reader>().Read_Status();
+        Game_Manager.GetComponent<Game_Manager>().ResetStage();
 
         while(fadeCount > 0.0f)
         {
