@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     private float Max_Speed;
     private float Max_Jump;
 
+    public GameObject Game_Manager;
     public GameObject Status_Reader;
     public GameObject Enemy;
     public GameObject Player_Hp_Bar;
@@ -90,6 +91,7 @@ public class Player : MonoBehaviour
 
         else // 전투 패배시
         {
+            Game_Manager.GetComponent<Game_Manager>().Player_Defeat();
             Destroy(this.gameObject);
         }
 

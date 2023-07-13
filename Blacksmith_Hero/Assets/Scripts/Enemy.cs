@@ -64,7 +64,8 @@ public class Enemy : MonoBehaviour
 
         else
         {
-            Game_Manager.GetComponent<Game_Manager>().Enemy_Defeat = true;
+            Game_Manager.GetComponent<Game_Manager>().Enemy_Defeat();
+
             //UnityEngine.SceneManagement.SceneManager.LoadScene(gameObject.scene.name);
             Destroy(this.gameObject);
 

@@ -59,29 +59,4 @@ public class EventSystem : MonoBehaviour
 
         Debug.Log("복사 완료");
     }
-
-
-    /*
-    #else
-            // Android 이외의 플랫폼에서는 일반적인 파일 복사 메서드를 사용합니다.
-            if (!Directory.Exists(targetPath))
-            {
-                Directory.CreateDirectory(targetPath);
-            }
-
-            string[] files = Directory.GetFiles(sourcePath);
-
-            foreach (string filePath in files)
-            {
-                string fileName = Path.GetFileName(filePath);
-                string targetFilePath = Path.Combine(targetPath, fileName);
-
-                if (!File.Exists(targetFilePath))
-                {
-                    File.Copy(filePath, targetFilePath);
-                }
-            }
-        #endif
-        }
-    */
 }

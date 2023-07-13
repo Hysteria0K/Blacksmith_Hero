@@ -30,7 +30,6 @@ public class CSVReader
 
                     rowData[header] = value;
                 }
-
                 data.Add(rowData);
             }
         }
