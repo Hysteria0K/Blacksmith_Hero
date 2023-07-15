@@ -27,19 +27,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        origin_Hp = Status_Reader.GetComponent<Status_Reader>().Enemy_Hp;
-
-        Col_check = false;
-
-        Max_Speed = -400.0f;
-
-        Enemy_Speed = Max_Speed;
-
-        Name = Status_Reader.GetComponent<Status_Reader>().Enemy_Name;
-        Hp = origin_Hp;
-        Atk = Status_Reader.GetComponent<Status_Reader>().Enemy_Atk;
-
-        Enemy_Name.GetComponent<Text>().text = $"{Name} ({Hp} / {origin_Hp})";
+        Load_Enemy();
     }
 
     // Update is called once per frame
@@ -64,9 +52,11 @@ public class Enemy : MonoBehaviour
 
         else
         {
+
+            Status_Reader.GetComponent<Status_Reader>().Stage += 1;
+            CSVWriter.UpdateDataBase("Stage", Status_Reader.GetComponent<Status_Reader>().Stage.ToString());
             Game_Manager.GetComponent<Game_Manager>().Enemy_Defeat();
 
-            //UnityEngine.SceneManagement.SceneManager.LoadScene(gameObject.scene.name);
             this.gameObject.SetActive(false);
 
         }
@@ -82,11 +72,32 @@ public class Enemy : MonoBehaviour
             Col_check = true;
             Hp -= Player.GetComponent<Player>().Atk;
             Hp_Bar_Update();
+
+            if (Game_Manager.GetComponent<Game_Manager>().Wall_check == false) Game_Manager.GetComponent<Game_Manager>().Wall_Set(true);
         }
     }
     public void Hp_Bar_Update()
     {
         Enemy_Hp_Bar.GetComponent<Image>().fillAmount = (float)Hp / origin_Hp;
+        Enemy_Name.GetComponent<Text>().text = $"{Name} ({Hp} / {origin_Hp})";
+    }
+
+    public void Load_Enemy()
+    {
+        Col_check = true;
+
+        Max_Speed = -400.0f;
+
+        Enemy_Speed = Max_Speed;
+
+        origin_Hp = Status_Reader.GetComponent<Status_Reader>().Enemy_Hp;
+
+        Name = Status_Reader.GetComponent<Status_Reader>().Enemy_Name;
+
+        Hp = origin_Hp;
+
+        Atk = Status_Reader.GetComponent<Status_Reader>().Enemy_Atk;
+
         Enemy_Name.GetComponent<Text>().text = $"{Name} ({Hp} / {origin_Hp})";
     }
 }

@@ -11,10 +11,12 @@ public class Game_Manager : MonoBehaviour
     public GameObject UI_Manager;
 
     public GameObject Right_Wall;
+    public GameObject Left_Wall;
 
     public GameObject Player;
     public GameObject Enemy;
 
+    public bool Wall_check;
     // Start is called before the first frame update
 
     void Start()
@@ -31,7 +33,7 @@ public class Game_Manager : MonoBehaviour
 
     public void Player_Defeat()
     {
-        //
+        UI_Manager.GetComponent<UI_Manager>().Fade();
     }
     public void Enemy_Defeat()
     {
@@ -43,6 +45,8 @@ public class Game_Manager : MonoBehaviour
 
     public void ResetStage()
     {
+        Wall_Set(false);
+
         Player.transform.position = new Vector3(-124, 988, 1);
         Enemy.transform.position = new Vector3(642, 1018, 1);
 
@@ -52,7 +56,20 @@ public class Game_Manager : MonoBehaviour
         Player.GetComponent<Player>().Hp_Bar_Update();
         Enemy.GetComponent<Enemy>().Hp_Bar_Update();
 
+        Player.GetComponent<Player>().Load_Player();
+        Enemy.GetComponent<Enemy>().Load_Enemy();
         Enemy.GetComponent<Enemy>().Enemy_Speed = 80.0f;
+
+        Player.SetActive(true);
         Enemy.SetActive(true);
+    }
+
+    public void Wall_Set(bool set)
+    {
+        Right_Wall.SetActive(set);
+        Left_Wall.SetActive(set);
+
+        if (set == true) Wall_check = true;
+        else Wall_check = false;
     }
 }

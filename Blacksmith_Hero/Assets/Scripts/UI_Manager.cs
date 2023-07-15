@@ -19,6 +19,7 @@ public class UI_Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Stage_Update();
         UI_Update();
     }
 
@@ -31,8 +32,12 @@ public class UI_Manager : MonoBehaviour
     public void UI_Update()
     {
         Gold.GetComponent<Text>().text = $"{Status_Reader.GetComponent<Status_Reader>().Gold}";
-        Stage.GetComponent<Text>().text = $"Stage {Status_Reader.GetComponent<Status_Reader>().Stage}";
         Token.GetComponent<Text>().text = $"{Status_Reader.GetComponent<Status_Reader>().Token}";
+    }
+
+    public void Stage_Update()
+    {
+        Stage.GetComponent<Text>().text = $"Stage {Status_Reader.GetComponent<Status_Reader>().Stage}";
     }
 
 
@@ -54,6 +59,7 @@ public class UI_Manager : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         Status_Reader.GetComponent<Status_Reader>().Read_Status();
+        Stage_Update();
         Game_Manager.GetComponent<Game_Manager>().ResetStage();
 
         while(fadeCount > 0.0f)

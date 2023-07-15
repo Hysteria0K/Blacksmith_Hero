@@ -28,21 +28,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        origin_Hp = Status_Reader.GetComponent<Status_Reader>().Player_Hp;
-
-        Jump_Speed = 0.0f;
-
-        Col_check = false;
-        Jump_check = false;
-
-        Max_Speed = 400.0f;
-        Max_Jump = 100.0f;
-
-        Player_Speed = Max_Speed;
-        Hp = origin_Hp;
-        Atk = Status_Reader.GetComponent<Status_Reader>().Player_Atk;
-
-        Player_Text.GetComponent<Text>().text = $"플레이어 ({Hp} / {origin_Hp})";
+        Load_Player();
     }
 
     // Update is called once per frame
@@ -91,8 +77,11 @@ public class Player : MonoBehaviour
 
         else // 전투 패배시
         {
+            Status_Reader.GetComponent<Status_Reader>().Stage -= 1;
+            CSVWriter.UpdateDataBase("Stage", Status_Reader.GetComponent<Status_Reader>().Stage.ToString());
             Game_Manager.GetComponent<Game_Manager>().Player_Defeat();
-            Destroy(this.gameObject);
+
+            this.gameObject.SetActive(false);
         }
 
     }
@@ -101,7 +90,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            Player_Speed = -500.0f;
+            Player_Speed = -500.0f; //-500.0f
             Col_check = true;
 
             Hp -= Enemy.GetComponent<Enemy>().Atk;
@@ -112,5 +101,29 @@ public class Player : MonoBehaviour
     {
         Player_Hp_Bar.GetComponent<Image>().fillAmount = (float)Hp / origin_Hp;
         Player_Text.GetComponent<Text>().text = $"플레이어 ({Hp} / {origin_Hp})";
+    }
+
+    public void Load_Player()
+    {
+        origin_Hp = Status_Reader.GetComponent<Status_Reader>().Player_Hp;
+
+        Jump_Speed = 0.0f;
+
+        Col_check = true;
+        Jump_check = false;
+
+        Max_Speed = 400.0f;
+        Max_Jump = 100.0f;
+
+        Player_Speed = Max_Speed;
+        Hp = origin_Hp;
+        Atk = Status_Reader.GetComponent<Status_Reader>().Player_Atk;
+
+        Player_Text.GetComponent<Text>().text = $"플레이어 ({Hp} / {origin_Hp})";
+    }
+
+    private void Wall_Set()
+    {
+
     }
 }
