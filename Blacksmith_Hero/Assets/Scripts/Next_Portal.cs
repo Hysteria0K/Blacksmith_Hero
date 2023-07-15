@@ -21,7 +21,6 @@ public class Next_Portal : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Debug.Log("¥Ÿ¿Ω");
             UI_Manager.GetComponent<UI_Manager>().Fade();
         }
     }

@@ -97,6 +97,7 @@ public class Player : MonoBehaviour
             Hp_Bar_Update();
         }
     }
+
     public void Hp_Bar_Update()
     {
         Player_Hp_Bar.GetComponent<Image>().fillAmount = (float)Hp / origin_Hp;
