@@ -16,6 +16,8 @@ public class UI_Manager : MonoBehaviour
 
     public GameObject Game_Manager;
 
+    public GameObject Mine_UI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -68,5 +70,10 @@ public class UI_Manager : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
             Panel.color = new Color(0, 0, 0, fadeCount);
         }
+    }
+
+    public void Mine_Select()
+    {
+        Mine_UI.GetComponent<Renderer>().enabled = true;
     }
 }
