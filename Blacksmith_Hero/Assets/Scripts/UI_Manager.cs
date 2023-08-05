@@ -47,7 +47,7 @@ public class UI_Manager : MonoBehaviour
 
     public void Mine_Level_Update()
     {
-        Mine_Level.GetComponent<Text>().text = $"±Ì¿Ã {Status_Reader.GetComponent<Status_Reader>().Mine_Level}M";
+        Mine_Level.GetComponent<Text>().text = $"Depth {Status_Reader.GetComponent<Status_Reader>().Mine_Level}M";
     }
 
 
