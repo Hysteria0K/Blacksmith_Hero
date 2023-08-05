@@ -18,6 +18,8 @@ public class Status_Reader : MonoBehaviour
     public int Enemy_Atk;
     public int Enemy_Gold;
 
+    public int Mine_Level;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +42,7 @@ public class Status_Reader : MonoBehaviour
         if (DataBase[0].ContainsKey("Stage")) if (int.TryParse(DataBase[0]["Stage"].ToString(), out Stage)) { }
         if (DataBase[0].ContainsKey("Gold")) if (int.TryParse(DataBase[0]["Gold"].ToString(), out Gold)) { }
         if (DataBase[0].ContainsKey("Token")) if (int.TryParse(DataBase[0]["Token"].ToString(), out Token)) { }
+        if (DataBase[0].ContainsKey("MineLevel")) if (int.TryParse(DataBase[0]["MineLevel"].ToString(), out Mine_Level)) { }
 
         if (Player_Status[Player_Level - 1].ContainsKey("Hp")) if (int.TryParse(Player_Status[Player_Level - 1]["Hp"].ToString(), out Player_Hp)) { }
         if (Player_Status[Player_Level - 1].ContainsKey("Atk")) if (int.TryParse(Player_Status[Player_Level - 1]["Atk"].ToString(), out Player_Atk)) { }

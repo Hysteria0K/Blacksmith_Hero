@@ -18,11 +18,14 @@ public class UI_Manager : MonoBehaviour
 
     public GameObject Mine_UI;
 
+    public GameObject Mine_Level;
+
     // Start is called before the first frame update
     void Start()
     {
         Stage_Update();
         UI_Update();
+        Mine_Level_Update();
     }
 
     // Update is called once per frame
@@ -40,6 +43,11 @@ public class UI_Manager : MonoBehaviour
     public void Stage_Update()
     {
         Stage.GetComponent<Text>().text = $"Stage {Status_Reader.GetComponent<Status_Reader>().Stage}";
+    }
+
+    public void Mine_Level_Update()
+    {
+        Mine_Level.GetComponent<Text>().text = $"±Ì¿Ã {Status_Reader.GetComponent<Status_Reader>().Mine_Level}M";
     }
 
 
@@ -74,6 +82,6 @@ public class UI_Manager : MonoBehaviour
 
     public void Mine_Select()
     {
-        Mine_UI.GetComponent<Renderer>().enabled = true;
+        Mine_UI.SetActive(true);
     }
 }
