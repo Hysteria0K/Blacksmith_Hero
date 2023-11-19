@@ -26,6 +26,8 @@ public class UI_Manager : MonoBehaviour
         Stage_Update();
         UI_Update();
         Mine_Level_Update();
+
+        Mine_UI.SetActive(false);
     }
 
     // Update is called once per frame
