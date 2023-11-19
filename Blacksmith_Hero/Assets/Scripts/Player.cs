@@ -122,9 +122,4 @@ public class Player : MonoBehaviour
 
         Player_Text.GetComponent<Text>().text = $"플레이어 ({Hp} / {origin_Hp})";
     }
-
-    private void Wall_Set()
-    {
-
-    }
 }
