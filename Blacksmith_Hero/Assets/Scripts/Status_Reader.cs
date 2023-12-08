@@ -24,7 +24,7 @@ public class Status_Reader : MonoBehaviour
     public int Enemy_Gold;
 
     //minestatus.csv
-    public int Upgrade_cost;
+    public int Mine_Upgrade_Cost;
     public int Get_Token;
     public int Mine_Time; // 토큰 얻는 데 걸리는 시간
 
@@ -63,7 +63,7 @@ public class Status_Reader : MonoBehaviour
         if (Enemy_Status[Stage - 1].ContainsKey("Atk")) if (int.TryParse(Enemy_Status[Stage - 1]["Atk"].ToString(), out Enemy_Atk)) { }
         if (Enemy_Status[Stage - 1].ContainsKey("Gold")) if (int.TryParse(Enemy_Status[Stage - 1]["Gold"].ToString(), out Enemy_Gold)) { }
 
-        if (Mine_Status[Mine_Level].ContainsKey("Upgrade")) if (int.TryParse(Mine_Status[Mine_Level]["Upgrade"].ToString(), out Upgrade_cost)) { }
+        if (Mine_Status[Mine_Level].ContainsKey("Upgrade")) if (int.TryParse(Mine_Status[Mine_Level]["Upgrade"].ToString(), out Mine_Upgrade_Cost)) { }
         if (Mine_Status[Mine_Level].ContainsKey("Token")) if (int.TryParse(Mine_Status[Mine_Level]["Token"].ToString(), out Get_Token)) { }
         if (Mine_Status[Mine_Level].ContainsKey("Time")) if (int.TryParse(Mine_Status[Mine_Level]["Time"].ToString(), out Mine_Time)) { }
 
