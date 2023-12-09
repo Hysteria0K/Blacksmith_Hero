@@ -72,4 +72,5 @@ public class Game_Manager : MonoBehaviour
         if (set == true) Wall_check = true;
         else Wall_check = false;
     }
+
 }
