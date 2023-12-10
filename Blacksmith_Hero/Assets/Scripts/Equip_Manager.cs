@@ -8,6 +8,9 @@ using UnityEngine;
 
 public class Equip_Manager : MonoBehaviour
 {
+    public GameObject UI_Manager;
+    public GameObject Status_Reader;
+
     private int Equip_Max_Index;
     private int Module_Max_Index;
 
@@ -45,10 +48,13 @@ public class Equip_Manager : MonoBehaviour
 
     public string Item_Code; // 장비타입(1), 장비스탯타입(2), 장비스탯(5), 모듈1(2), 모듈1값(4), 모듈2(2), 모듈2값(4), 모듈3(2), 모듈3값(4)
 
+    public int Create_Mode = 1; //idle
+    public int Require_Token;
+
     // Start is called before the first frame update
     void Start()
     {
-        Create_Equip();
+        Set_Mode();
     }
 
     // Update is called once per frame
@@ -122,7 +128,17 @@ public class Equip_Manager : MonoBehaviour
 
         Item_Code = Get_Code.ToString();
 
+        Status_Reader.GetComponent<Status_Reader>().Token -= Require_Token;
+        CSVWriter.UpdateDataBase("Token", Status_Reader.GetComponent<Status_Reader>().Token.ToString());
+        UI_Manager.GetComponent<UI_Manager>().UI_Update();
     }
 
+    public void Set_Mode()
+    {
+        if (Create_Mode == 1) Require_Token = 1;
+
+
+        UI_Manager.GetComponent<UI_Manager>().UI_Update();
+    }
 
 }

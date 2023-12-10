@@ -17,6 +17,7 @@ public class UI_Manager : MonoBehaviour
     public Image Panel;
 
     public GameObject Game_Manager;
+    public GameObject Equip_Manager;
 
     public GameObject Mine_UI;
     public GameObject Equip_UI;
@@ -25,6 +26,9 @@ public class UI_Manager : MonoBehaviour
     public GameObject Mine_Upgrade_Cost;
     public GameObject Mine_Get_Token;
     public GameObject Mine_Upgrade_Button;
+
+    public GameObject Equip_Require_Token;
+    public GameObject Equip_Create_Button;
 
     private bool Mine_Selected;
     private bool Equip_Selected;
@@ -46,6 +50,7 @@ public class UI_Manager : MonoBehaviour
     void Update()
     {
         Mine_Upgrade_SetActive();
+        Equip_Create_SetActive();
     }
 
     public void UI_Update()
@@ -58,6 +63,10 @@ public class UI_Manager : MonoBehaviour
         Mine_Level.GetComponent<Text>().text = $"Depth {Status_Reader.GetComponent<Status_Reader>().Mine_Level}M";
         Mine_Upgrade_Cost.GetComponent<Text>().text = $"{Status_Reader.GetComponent<Status_Reader>().Mine_Upgrade_Cost} Gold";
         Mine_Get_Token.GetComponent<Text>().text = $"{Status_Reader.GetComponent<Status_Reader>().Get_Token}";
+
+        //Equip_Create
+        if ( Equip_Manager.GetComponent<Equip_Manager>().Create_Mode == 1 ) Equip_Require_Token.GetComponent<Text>().text = $"{Equip_Manager.GetComponent<Equip_Manager>().Require_Token} Required";
+
     }
 
     public void Stage_Update()
@@ -135,5 +144,14 @@ public class UI_Manager : MonoBehaviour
             Equip_UI.SetActive(false);
             Equip_Selected = false;
         }
+    }
+
+    public void Equip_Create_SetActive()
+    {
+        if (Equip_Selected == true && Status_Reader.GetComponent<Status_Reader>().Token >= Equip_Manager.GetComponent<Equip_Manager>().Require_Token)
+        {
+            Equip_Create_Button.SetActive(true);
+        }
+        else Equip_Create_Button.SetActive(false);
     }
 }
