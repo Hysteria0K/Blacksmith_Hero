@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Text;
+using Unity.VisualScripting;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
@@ -41,7 +43,7 @@ public class Equip_Manager : MonoBehaviour
     private int Module2_Selected;
     private int Module3_Selected;
 
-    public int Item_Code;
+    public string Item_Code; // 장비타입(1), 장비스탯타입(2), 장비스탯(5), 모듈1(2), 모듈1값(4), 모듈2(2), 모듈2값(4), 모듈3(2), 모듈3값(4)
 
     // Start is called before the first frame update
     void Start()
@@ -103,6 +105,23 @@ public class Equip_Manager : MonoBehaviour
         Module1_Status = Random.Range(Module1_Min_Status, Module1_Max_Status + 1);
         Module2_Status = Random.Range(Module2_Min_Status, Module2_Max_Status + 1);
         Module3_Status = Random.Range(Module3_Min_Status, Module3_Max_Status + 1);
+
+        // 아이템 코드 생성
+
+        StringBuilder Get_Code = new StringBuilder();
+
+        Get_Code.Append($"{Equip_Type:D1}");
+        Get_Code.Append($"{Equip_Main_Status_Type:D2}");
+        Get_Code.Append($"{Equip_Status:D5}");
+        Get_Code.Append($"{Module1:D2}");
+        Get_Code.Append($"{Module1_Status:D4}");
+        Get_Code.Append($"{Module2:D2}");
+        Get_Code.Append($"{Module2_Status:D4}");
+        Get_Code.Append($"{Module3:D2}");
+        Get_Code.Append($"{Module3_Status:D4}");
+
+        Item_Code = Get_Code.ToString();
+
     }
 
 
