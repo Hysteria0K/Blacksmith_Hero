@@ -10,6 +10,7 @@ public class Equip_Manager : MonoBehaviour
 {
     public GameObject UI_Manager;
     public GameObject Status_Reader;
+    public GameObject Equip_Create_UI_Manager;
 
     private int Equip_Max_Index;
     private int Module_Max_Index;
@@ -131,6 +132,7 @@ public class Equip_Manager : MonoBehaviour
         Status_Reader.GetComponent<Status_Reader>().Token -= Require_Token;
         CSVWriter.UpdateDataBase("Token", Status_Reader.GetComponent<Status_Reader>().Token.ToString());
         UI_Manager.GetComponent<UI_Manager>().UI_Update();
+        Equip_Create_UI_Manager.GetComponent<Equip_Create_UI_Manager>().Equip_Created_UI_Update();
     }
 
     public void Set_Mode()
