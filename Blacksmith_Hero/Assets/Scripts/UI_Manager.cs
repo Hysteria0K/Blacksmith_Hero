@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime;
+using UnityEditor.AnimatedValues;
 //using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,6 +19,7 @@ public class UI_Manager : MonoBehaviour
     public GameObject Game_Manager;
 
     public GameObject Mine_UI;
+    public GameObject Equip_UI;
 
     public GameObject Mine_Level;
     public GameObject Mine_Upgrade_Cost;
@@ -25,6 +27,7 @@ public class UI_Manager : MonoBehaviour
     public GameObject Mine_Upgrade_Button;
 
     private bool Mine_Selected;
+    private bool Equip_Selected;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +37,9 @@ public class UI_Manager : MonoBehaviour
 
         Mine_UI.SetActive(false);
         Mine_Selected = false;
+
+        Equip_UI.SetActive(false);
+        Equip_Selected = false;
     }
 
     // Update is called once per frame
@@ -94,6 +100,9 @@ public class UI_Manager : MonoBehaviour
         {
             Mine_UI.SetActive(true);
             Mine_Selected = true;
+
+            Equip_UI.SetActive(false);
+            Equip_Selected = false;
         }
         else
         {
@@ -109,5 +118,22 @@ public class UI_Manager : MonoBehaviour
             Mine_Upgrade_Button.SetActive(true);
         }
         else Mine_Upgrade_Button.SetActive(false);
+    }
+
+    public void Equip_Select()
+    {
+        if (Equip_Selected == false)
+        {
+            Equip_UI.SetActive(true);
+            Equip_Selected = true;
+
+            Mine_UI.SetActive(false);
+            Mine_Selected = false;
+        }
+        else
+        {
+            Equip_UI.SetActive(false);
+            Equip_Selected = false;
+        }
     }
 }
