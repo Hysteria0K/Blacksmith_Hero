@@ -9,6 +9,7 @@ public class Status_Reader : MonoBehaviour
     public int Player_Level;
     public int Player_Hp;
     public int Player_Atk;
+    public int Player_Def = 0;
 
     //database.csv
     public int Stage;

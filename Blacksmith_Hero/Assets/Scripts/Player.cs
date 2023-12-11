@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
 
     public int Hp;
     public int Atk;
+    public int Def;
 
     public int origin_Hp;
     // Start is called before the first frame update
@@ -93,8 +94,11 @@ public class Player : MonoBehaviour
             Player_Speed = -500.0f; //-500.0f
             Col_check = true;
 
-            Hp -= Enemy.GetComponent<Enemy>().Atk;
-            Hp_Bar_Update();
+            if (Def < Enemy.GetComponent<Enemy>().Atk)
+            {
+                Hp -= (Enemy.GetComponent<Enemy>().Atk - Def);
+                Hp_Bar_Update();
+            }
         }
     }
 
@@ -107,6 +111,8 @@ public class Player : MonoBehaviour
     public void Load_Player()
     {
         origin_Hp = Status_Reader.GetComponent<Status_Reader>().Player_Hp;
+        Atk = Status_Reader.GetComponent<Status_Reader>().Player_Atk;
+        Def = Status_Reader.GetComponent<Status_Reader>().Player_Def;
 
         Jump_Speed = 0.0f;
 
@@ -118,7 +124,6 @@ public class Player : MonoBehaviour
 
         Player_Speed = Max_Speed;
         Hp = origin_Hp;
-        Atk = Status_Reader.GetComponent<Status_Reader>().Player_Atk;
 
         Player_Text.GetComponent<Text>().text = $"플레이어 ({Hp} / {origin_Hp})";
     }

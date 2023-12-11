@@ -11,6 +11,7 @@ public class Equip_Manager : MonoBehaviour
     public GameObject UI_Manager;
     public GameObject Status_Reader;
     public GameObject Equip_Create_UI_Manager;
+    public GameObject Equip_Created;
 
     private int Equip_Max_Index;
     private int Module_Max_Index;
@@ -141,6 +142,42 @@ public class Equip_Manager : MonoBehaviour
 
 
         UI_Manager.GetComponent<UI_Manager>().UI_Update();
+    }
+
+    public void Equip_Wear()
+    {
+        switch(Equip_Type)
+        {
+            case 1:
+                {
+                    CSVWriter.UpdateDataBase("Helmet", Item_Code);
+                    break;
+                }
+            case 2:
+                {
+                    CSVWriter.UpdateDataBase("Chest", Item_Code);
+                    break;
+                }
+            case 3:
+                {
+                    CSVWriter.UpdateDataBase("Pants", Item_Code);
+                    break;
+                }
+            case 4:
+                {
+                    CSVWriter.UpdateDataBase("Gloves", Item_Code);
+                    break;
+                }
+            case 5:
+                {
+                    CSVWriter.UpdateDataBase("Boots", Item_Code);
+                    break;
+                }
+            default: break;
+        }
+
+        Equip_Created.SetActive(false);
+
     }
 
 }
