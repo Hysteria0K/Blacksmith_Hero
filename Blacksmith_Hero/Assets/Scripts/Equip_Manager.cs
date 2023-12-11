@@ -177,6 +177,7 @@ public class Equip_Manager : MonoBehaviour
         }
 
         Equip_Created.SetActive(false);
+        Status_Reader.GetComponent<Status_Reader>().Read_Status();
 
     }
 
