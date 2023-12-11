@@ -35,6 +35,9 @@ public class UI_Manager : MonoBehaviour
     public GameObject Player_Hp;
     public GameObject Player_Atk;
     public GameObject Player_Def;
+    public GameObject Atk_Module;
+    public GameObject Def_Module;
+    public GameObject Uti_Module;
 
     private bool Mine_Selected;
     private bool Equip_Selected;
@@ -199,6 +202,9 @@ public class UI_Manager : MonoBehaviour
         Player_Hp.GetComponent<Text>().text = $"Hp : {Status_Reader.GetComponent<Status_Reader>().Player_Hp}";
         Player_Atk.GetComponent<Text>().text = $"Atk : {Status_Reader.GetComponent<Status_Reader>().Player_Atk}";
         Player_Def.GetComponent<Text>().text = $"Def : {Status_Reader.GetComponent<Status_Reader>().Player_Def}";
+        Atk_Module.GetComponent<Text>().text = $"Atk M : {Status_Reader.GetComponent<Status_Reader>().Atk_Module}";
+        Def_Module.GetComponent<Text>().text = $"Def M : {Status_Reader.GetComponent<Status_Reader>().Def_Module}";
+        Uti_Module.GetComponent<Text>().text = $"Uti M : {Status_Reader.GetComponent<Status_Reader>().Uti_Module}";
 
     }
 

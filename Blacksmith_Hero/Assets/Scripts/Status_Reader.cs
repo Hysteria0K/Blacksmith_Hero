@@ -111,6 +111,8 @@ public class Status_Reader : MonoBehaviour
         if (Mine_Status[Mine_Level].ContainsKey("Token")) int.TryParse(Mine_Status[Mine_Level]["Token"].ToString(), out Get_Token);
         if (Mine_Status[Mine_Level].ContainsKey("Time")) int.TryParse(Mine_Status[Mine_Level]["Time"].ToString(), out Mine_Time);
 
+        Player_Def = 0;
+
         Atk_Module = 0;
         Def_Module= 0;
         Uti_Module= 0;
@@ -166,7 +168,6 @@ public class Status_Reader : MonoBehaviour
     {
         if (Equip_Code[0] == '0')
         {
-            Debug.Log("작동안함");
             return;
         }
 
@@ -204,7 +205,10 @@ public class Status_Reader : MonoBehaviour
         str3.Append(Equip_Code[9]);
 
         Temp.Module1= int.Parse(str3.ToString());
-        if (Module_Data[Temp.Module1].ContainsKey("Type")) int.TryParse(Module_Data[Temp.Module1]["Type"].ToString(), out Temp.Module1_Type);
+
+        Debug.Log( "모듈"+Temp.Module1);
+        if (Module_Data[Temp.Module1 - 1].ContainsKey("Type")) int.TryParse(Module_Data[Temp.Module1 - 1]["Type"].ToString(), out Temp.Module1_Type);
+        Debug.Log("모듈 타입"+Temp.Module1_Type);
 
         //모듈1 수치
         StringBuilder str4 = new StringBuilder();
@@ -223,7 +227,7 @@ public class Status_Reader : MonoBehaviour
         str5.Append(Equip_Code[15]);
 
         Temp.Module2 = int.Parse(str5.ToString());
-        if (Module_Data[Temp.Module2].ContainsKey("Type")) int.TryParse(Module_Data[Temp.Module2]["Type"].ToString(), out Temp.Module2_Type);
+        if (Module_Data[Temp.Module2 - 1].ContainsKey("Type")) int.TryParse(Module_Data[Temp.Module2 - 1]["Type"].ToString(), out Temp.Module2_Type);
 
         //모듈2 수치
         StringBuilder str6 = new StringBuilder();
@@ -242,7 +246,7 @@ public class Status_Reader : MonoBehaviour
         str7.Append(Equip_Code[21]);
 
         Temp.Module3 = int.Parse(str7.ToString());
-        if (Module_Data[Temp.Module3].ContainsKey("Type")) int.TryParse(Module_Data[Temp.Module3]["Type"].ToString(), out Temp.Module3_Type);
+        if (Module_Data[Temp.Module3 - 1].ContainsKey("Type")) int.TryParse(Module_Data[Temp.Module3 - 1]["Type"].ToString(), out Temp.Module3_Type);
 
         //모듈3 수치
         StringBuilder str8 = new StringBuilder();
