@@ -111,11 +111,16 @@ public class Status_Reader : MonoBehaviour
         if (Mine_Status[Mine_Level].ContainsKey("Token")) int.TryParse(Mine_Status[Mine_Level]["Token"].ToString(), out Get_Token);
         if (Mine_Status[Mine_Level].ContainsKey("Time")) int.TryParse(Mine_Status[Mine_Level]["Time"].ToString(), out Mine_Time);
 
+        Read_Equip();
+    }
+
+    public void Read_Equip()
+    {
         Player_Def = 0;
 
         Atk_Module = 0;
-        Def_Module= 0;
-        Uti_Module= 0;
+        Def_Module = 0;
+        Uti_Module = 0;
 
         Hp_p = 100;
         Atk_p = 100;
@@ -127,11 +132,6 @@ public class Status_Reader : MonoBehaviour
         Gloves.Equiped = false;
         Boots.Equiped = false;
 
-        Read_Equip();
-    }
-
-    public void Read_Equip()
-    {
         List<Dictionary<string, object>> DataBase = CSVReader.Read("database.csv");
 
         if (DataBase[0].ContainsKey("Helmet")) Helmet_Code = DataBase[0]["Helmet"].ToString();
@@ -206,9 +206,7 @@ public class Status_Reader : MonoBehaviour
 
         Temp.Module1= int.Parse(str3.ToString());
 
-        Debug.Log( "모듈"+Temp.Module1);
         if (Module_Data[Temp.Module1 - 1].ContainsKey("Type")) int.TryParse(Module_Data[Temp.Module1 - 1]["Type"].ToString(), out Temp.Module1_Type);
-        Debug.Log("모듈 타입"+Temp.Module1_Type);
 
         //모듈1 수치
         StringBuilder str4 = new StringBuilder();

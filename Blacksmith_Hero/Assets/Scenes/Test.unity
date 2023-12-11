@@ -2164,6 +2164,9 @@ MonoBehaviour:
   Player_Hp: {fileID: 1057230033}
   Player_Atk: {fileID: 499824473}
   Player_Def: {fileID: 620178142}
+  Atk_Module: {fileID: 1388607447}
+  Def_Module: {fileID: 150282125}
+  Uti_Module: {fileID: 1280081187}
 --- !u!1 &932259843
 GameObject:
   m_ObjectHideFlags: 0
